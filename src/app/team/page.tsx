@@ -1,14 +1,14 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const team = [
-  { name: "Горелкина Галина Викторовна", role: "Руководитель компании", exp: "20+ лет опыта" },
-  { name: "Самылова Ирина", role: "Главный бухгалтер, аудитор", exp: "В компании более 20 лет" },
-  { name: "Тимофеева Юлия", role: "Главный бухгалтер, аудитор, консультант", exp: "В компании 3 года" },
-  { name: "Анастасия Зайцева", role: "Специалист по управленческому учёту", exp: "Работает более 3 лет" },
-  { name: "Инна Пысларь", role: "Старший бухгалтер", exp: "" },
-  { name: "Елена Велейшикова", role: "Старший бухгалтер, специалист по управленческому учёту", exp: "В компании более 1 года" },
-  { name: "Диана Гаджигасова", role: "Бухгалтер по первичной документации", exp: "" },
-  { name: "Анна Сухоплечева", role: "Бухгалтер по первичной документации", exp: "" },
+  { name: "Самылова Ирина", role: "Главный бухгалтер, аудитор", exp: "В компании более 20 лет", photo: "/team/bx_1740173516479.jpg" },
+  { name: "Тимофеева Юлия", role: "Главный бухгалтер, аудитор, консультант", exp: "В компании 3 года", photo: "/team/MVV00348.jpg" },
+  { name: "Анастасия Зайцева", role: "Специалист по управленческому учёту", exp: "Работает более 3 лет", photo: "/team/meOsa7UsjTojpg.png" },
+  { name: "Диана Гаджигасова", role: "Бухгалтер по первичной документации", exp: "", photo: "/team/MVV00379.jpg" },
+  { name: "Анна Сухоплечева", role: "Бухгалтер по первичной документации", exp: "", photo: "/team/MVV00334.jpg" },
+  { name: "Инна Пысларь", role: "Старший бухгалтер", exp: "", photo: "/team/MVV00359.jpg" },
+  { name: "Елена Велейшикова", role: "Старший бухгалтер, специалист по управленческому учёту", exp: "В компании более 1 года", photo: "/team/MVV00415.jpg" },
 ];
 
 export default function TeamPage() {
@@ -26,7 +26,9 @@ export default function TeamPage() {
         <div className="m-1col t-2col" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 24 }}>
           {team.map(m => (
             <div key={m.name} style={{ background: "#fff", border: "1px solid #E8E8E8", borderRadius: 10, overflow: "hidden" }}>
-              <div style={{ height: 280, background: "#F5F5F5", display: "flex", alignItems: "center", justifyContent: "center", color: "#9E9A94", fontSize: 13 }}>Фото</div>
+              <div style={{ height: 280, position: "relative", overflow: "hidden" }}>
+                <Image src={m.photo} alt={m.name} fill style={{ objectFit: "cover", objectPosition: "top" }} />
+              </div>
               <div style={{ padding: "20px 22px" }}>
                 <div style={{ fontSize: 18, fontWeight: 600 }}>{m.name}</div>
                 <div style={{ fontSize: 13, color: "#6B6B6B", marginTop: 4 }}>{m.role}</div>
