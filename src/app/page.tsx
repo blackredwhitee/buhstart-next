@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import ConsultForm from "@/components/ConsultForm";
 import ServiceCard from "@/components/ServiceCard";
+import FaqSection from "@/components/FaqSection";
 
 const services = [
   { glyph: "₽", name: "Бухгалтерские услуги", desc: "Полное ведение учёта и отчётности: АУСН, УСН, ОСНО, зарплата и кадры.", slug: "bukhgalterskie-uslugi" },
@@ -13,10 +14,10 @@ const services = [
 ];
 
 const advantages = [
-  { title: "Персональный бухгалтер", desc: "Не колл-центр и не чат-бот — один специалист, который знает ваш бизнес." },
-  { title: "Гарантия возврата переплат", desc: "Найдём и вернём переплаченные налоги — это прописано в договоре." },
-  { title: "Ответ в течение 2 часов", desc: "В рабочее время ваш вопрос не останется без ответа дольше двух часов." },
-  { title: "Страхование ответственности", desc: "Профессиональная ответственность застрахована — ваши риски покрыты." },
+  { num: "01", title: "Персональный бухгалтер", desc: "Не колл-центр и не чат-бот — один специалист, который знает ваш бизнес." },
+  { num: "02", title: "Гарантия возврата переплат", desc: "Найдём и вернём переплаченные налоги — это прописано в договоре." },
+  { num: "03", title: "Ответ в течение 2 часов", desc: "В рабочее время ваш вопрос не останется без ответа дольше двух часов." },
+  { num: "04", title: "Страхование ответственности", desc: "Профессиональная ответственность застрахована — ваши риски покрыты." },
 ];
 
 const team = [
@@ -24,13 +25,6 @@ const team = [
   { name: "Тимофеева Юлия", role: "Главный бухгалтер, аудитор, консультант", exp: "в компании 3 года", photo: "/team/MVV00348.jpg" },
   { name: "Анастасия Зайцева", role: "Специалист по управленческому учёту", exp: "работает более 3 лет", photo: "/team/meOsa7UsjTojpg.png" },
   { name: "Инна Пысларь", role: "Старший бухгалтер", exp: "", photo: "/team/MVV00359.jpg" },
-];
-
-const reviews = [
-  { initial: "А", name: "Александр Третьяков", org: "ООО «ПФ АКТ»", text: "Я спокойно занимаюсь бизнесом, а вы взяли на себя всю бумажную работу. Никакой головной боли." },
-  { initial: "Н", name: "Комиссаров Николай", org: "ООО «АТ-СИСТЕМА»", text: "Меня всё устраивает в сотрудничестве с Галиной Викторовной. Планирую запускать новые проекты и продолжу работу с профессионалом." },
-  { initial: "Т", name: "Тимофей Семин", org: "ОАО «Агат-аквариус»", text: "Спасибо вашей компании, я даже не знал, что бухгалтерия может быть такой — ориентированной на бизнес." },
-  { initial: "Н", name: "Наталья Новикова", org: "", text: "Сотрудничаем с Галиной с 2022 года, помогла уже с решением нескольких сложных задач, провели аудит, дали рекомендации. Рекомендую." },
 ];
 
 const articles = [
@@ -45,48 +39,57 @@ export default function HomePage() {
   return (
     <>
       {/* Hero */}
-      <section className="m-hero" style={{ maxWidth: 1100, margin: "0 auto", padding: "72px 24px 64px", display: "grid", gridTemplateColumns: "1.1fr 0.9fr", gap: 48, alignItems: "center" }}>
-        <div>
-          <div style={{ fontSize: 12, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "#F07828", marginBottom: 16 }}>
-            Бухгалтерское сопровождение в Москве
-          </div>
-          <h1 style={{ margin: "0 0 20px", fontSize: 52, lineHeight: 1.12, fontWeight: 800, letterSpacing: "-0.02em" }}>
-            Ваш бизнес — наша зона ответственности
-          </h1>
-          <p style={{ margin: "0 0 32px", fontSize: 18, lineHeight: 1.6, color: "#6B6B6B", maxWidth: 480 }}>
-            Профессиональная бухгалтерия для ИП и ООО. Работаем удалённо по всей России. Отвечаем в течение 2 часов.
-          </p>
-          <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
-            <Link href="/calculator" className="btn-primary" style={{ height: 52, padding: "0 26px", fontSize: 16 }}>Рассчитать стоимость</Link>
-            <Link href="#zapis" className="btn-secondary" style={{ height: 52, padding: "0 26px", fontSize: 16, borderColor: "#3D3D3D", color: "#3D3D3D" }}>Записаться на консультацию</Link>
-          </div>
-          <div style={{ display: "flex", gap: 32, marginTop: 44, flexWrap: "wrap" }}>
-            {[["20+ лет", "на рынке"], ["350+", "клиентов"], ["2 часа", "время ответа"], ["0 ₽", "штрафов по нашей вине"]].map(([val, label]) => (
-              <div key={label}>
-                <div style={{ fontSize: 26, fontWeight: 800, color: "#F07828" }}>{val}</div>
-                <div style={{ fontSize: 13, color: "#6B6B6B" }}>{label}</div>
-              </div>
-            ))}
-          </div>
+      <section style={{ maxWidth: 1100, margin: "0 auto", padding: "72px 24px 64px" }}>
+        <div style={{ fontSize: 12, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "#F07828", marginBottom: 20 }}>
+          Комплексное бухгалтерское обслуживание · Москва
         </div>
-        <div className="m-heroimg" style={{ height: 460, background: "#FEF0E6", borderRadius: 12, display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <span style={{ fontSize: 13, color: "#B84F1A" }}>Фото команды</span>
+        <h1 style={{ margin: "0 0 24px", fontSize: "clamp(44px,6vw,72px)", lineHeight: 1.05, fontWeight: 900, letterSpacing: "-0.03em", maxWidth: 780 }}>
+          Ваш бизнес —{" "}
+          <span style={{ boxShadow: "inset 0 -0.28em 0 #FEC89E" }}>наша зона</span>{" "}
+          ответственности
+        </h1>
+        <p style={{ margin: "0 0 36px", fontSize: 18, lineHeight: 1.65, color: "#6B6B6B", maxWidth: 540 }}>
+          Настроим и укомплектуем вашу бухгалтерию профессиональными специалистами. Работаем с ИП и ООО удалённо по всей России.
+        </p>
+        <div style={{ display: "flex", gap: 20, flexWrap: "wrap", alignItems: "center" }}>
+          <Link href="/calculator" className="btn-primary" style={{ height: 52, padding: "0 28px", fontSize: 16 }}>
+            Рассчитать стоимость
+          </Link>
+          <Link href="#zapis" style={{ fontSize: 15, fontWeight: 600, color: "#1A1A1A", textDecoration: "underline", textUnderlineOffset: 4 }}>
+            Записаться на консультацию →
+          </Link>
+        </div>
+
+        {/* Stats grid */}
+        <div className="m-stats" style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 0, marginTop: 56, border: "1px solid #E8E8E8", borderRadius: 12, overflow: "hidden" }}>
+          {[
+            ["20+ лет", "на рынке"],
+            ["350+", "клиентов"],
+            ["2 часа", "время ответа"],
+            ["0 ₽", "штрафов по нашей вине"],
+          ].map(([val, label], i) => (
+            <div key={label} style={{ padding: "24px 28px", borderLeft: i > 0 ? "1px solid #E8E8E8" : undefined }}>
+              <div style={{ fontSize: 32, fontWeight: 900, letterSpacing: "-0.02em", color: "#F07828" }}>{val}</div>
+              <div style={{ fontSize: 13, color: "#6B6B6B", marginTop: 4 }}>{label}</div>
+            </div>
+          ))}
         </div>
       </section>
 
       {/* Trust bar */}
       <section style={{ background: "#F5F5F5", borderTop: "1px solid #E8E8E8", borderBottom: "1px solid #E8E8E8" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", padding: "22px 24px", display: "flex", justifyContent: "space-between", gap: 24, flexWrap: "wrap", fontSize: 14, color: "#3D3D3D", fontWeight: 500 }}>
-          {["Работаем с 2003 года", "1С:Партнёр", "Страхование профответственности", "УСН · ОСНО · АУСН · Патент", "НДС и ВЭД"].map(t => <span key={t}>{t}</span>)}
+          {["1С:Партнёр", "Страхование профответственности", "УСН · ОСНО · АУСН · Патент", "НДС и ВЭД"].map(t => <span key={t}>{t}</span>)}
         </div>
       </section>
 
       {/* Services */}
       <section id="uslugi" style={{ maxWidth: 1100, margin: "0 auto", padding: "80px 24px" }}>
-        <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 16, marginBottom: 36 }}>
+        <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 16, marginBottom: 12 }}>
           <h2 style={{ margin: 0, fontSize: 36, fontWeight: 800, letterSpacing: "-0.02em" }}>Что мы делаем</h2>
           <Link href="/uslugi" style={{ fontWeight: 600, fontSize: 15, color: "#F07828" }}>Все услуги →</Link>
         </div>
+        <p style={{ margin: "0 0 36px", fontSize: 16, color: "#6B6B6B", maxWidth: 560 }}>Мы работаем более 20 лет и знаем, что нужно бизнесу на каждом этапе.</p>
         <div className="m-1col t-2col" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 24 }}>
           {services.map(s => (
             <ServiceCard key={s.name} {...s} />
@@ -98,13 +101,112 @@ export default function HomePage() {
       <section style={{ background: "#3D3D3D", color: "#fff" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", padding: "72px 24px" }}>
           <h2 style={{ margin: "0 0 40px", fontSize: 36, fontWeight: 800, letterSpacing: "-0.02em" }}>Чем мы отличаемся</h2>
-          <div className="m-1col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "32px 48px" }}>
-            {advantages.map(a => (
-              <div key={a.title} style={{ display: "flex", gap: 16 }}>
-                <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#F07828", marginTop: 8, flexShrink: 0 }} />
-                <div>
-                  <div style={{ fontSize: 19, fontWeight: 600, marginBottom: 6 }}>{a.title}</div>
-                  <div style={{ fontSize: 14, lineHeight: 1.6, color: "rgba(255,255,255,0.65)" }}>{a.desc}</div>
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            {advantages.map((a, i) => (
+              <div key={a.num} className="m-adv-row" style={{
+                display: "grid", gridTemplateColumns: "80px 1fr 1fr", gap: "0 40px",
+                padding: "28px 0", borderTop: "1px solid rgba(255,255,255,0.12)",
+                borderBottom: i === advantages.length - 1 ? "1px solid rgba(255,255,255,0.12)" : undefined,
+                alignItems: "center",
+              }}>
+                <div style={{ fontSize: 13, fontWeight: 700, color: "rgba(255,255,255,0.35)", letterSpacing: "0.05em" }}>{a.num}</div>
+                <div style={{ fontSize: 19, fontWeight: 600 }}>{a.title}</div>
+                <div style={{ fontSize: 14, lineHeight: 1.65, color: "rgba(255,255,255,0.6)" }}>{a.desc}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Galina quote */}
+      <section style={{ background: "#F07828", color: "#fff" }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto", padding: "72px 24px", display: "grid", gridTemplateColumns: "1fr 1.5fr", gap: 64, alignItems: "center" }} className="m-galina">
+          <div style={{ position: "relative", height: 340, borderRadius: 12, overflow: "hidden", background: "rgba(255,255,255,0.15)" }}>
+            <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 8 }}>
+              <div style={{ width: 64, height: 64, borderRadius: "50%", background: "rgba(255,255,255,0.3)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 28, fontWeight: 700 }}>Г</div>
+              <div style={{ fontSize: 14, fontWeight: 600, opacity: 0.8 }}>Горелкина Галина Викторовна</div>
+              <div style={{ fontSize: 12, opacity: 0.6 }}>Руководитель компании</div>
+            </div>
+          </div>
+          <div>
+            <div style={{ fontSize: 60, lineHeight: 0.8, fontWeight: 900, opacity: 0.3, marginBottom: 8 }}>{"“"}</div>
+            <p style={{ margin: "0 0 28px", fontSize: 22, lineHeight: 1.5, fontWeight: 500 }}>
+              Я основала компанию, потому что видела, как предприниматели теряют деньги из-за ошибок в учёте и незнания налоговых возможностей. Наша задача — чтобы бухгалтерия работала на ваш бизнес, а не против него.
+            </p>
+            <a href="https://t.me/Galina_Gor" target="_blank" rel="noopener noreferrer"
+              style={{ display: "inline-flex", alignItems: "center", gap: 10, padding: "12px 22px", background: "rgba(255,255,255,0.2)", borderRadius: 8, color: "#fff", fontWeight: 600, fontSize: 15, textDecoration: "none" }}>
+              <span style={{ fontSize: 18 }}>✈</span>
+              Написать мне лично в Telegram
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Calculator CTA */}
+      <section id="calculator" style={{ background: "#F5F5F5", borderBottom: "1px solid #E8E8E8" }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto", padding: "80px 24px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }} className="m-calc-grid">
+          <div>
+            <h2 style={{ margin: "0 0 12px", fontSize: 36, fontWeight: 800, letterSpacing: "-0.02em", lineHeight: 1.15 }}>Подберём услуги под вашу ситуацию</h2>
+            <p style={{ margin: "0 0 36px", fontSize: 16, color: "#6B6B6B", lineHeight: 1.65 }}>9 вопросов — и вы узнаете, какое обслуживание подходит именно вашему бизнесу</p>
+            <div style={{ display: "flex", flexDirection: "column", gap: 20, marginBottom: 36 }}>
+              {[
+                ["1", "Ответьте на вопросы", "Расскажите о форме бизнеса, налогах и штате"],
+                ["2", "Получите рекомендации", "Система подберёт подходящие услуги"],
+                ["3", "Обсудите с бухгалтером", "Свяжитесь с нами для уточнения деталей"],
+              ].map(([n, t, d]) => (
+                <div key={n} style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
+                  <div style={{ width: 36, height: 36, borderRadius: "50%", background: "#F07828", color: "#fff", fontWeight: 700, fontSize: 15, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>{n}</div>
+                  <div>
+                    <div style={{ fontSize: 16, fontWeight: 600, marginBottom: 3 }}>{t}</div>
+                    <div style={{ fontSize: 13, color: "#6B6B6B" }}>{d}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <Link href="/calculator" className="btn-primary" style={{ height: 52, padding: "0 30px", fontSize: 16 }}>Начать расчёт</Link>
+          </div>
+          {/* Animated quiz preview */}
+          <div style={{ background: "#fff", border: "1px solid #E8E8E8", borderRadius: 16, padding: 32, overflow: "hidden" }} className="m-hide-mobile">
+            <style>{`
+              @keyframes qzBarGrow { from { width: 0; } to { width: 55%; } }
+              @keyframes qzSelPulse { 0%,100% { background: #FEF0E6; border-color: #F07828; } 50% { background: #FFE0C8; } }
+              .qz-bar-track { height: 6px; background: #F0EDE9; border-radius: 3px; margin-bottom: 24px; }
+              .qz-bar-fill { height: 6px; background: #F07828; border-radius: 3px; animation: qzBarGrow 1.2s cubic-bezier(.4,0,.2,1) 0.3s both; }
+              .qz-label { font-size: 11px; font-weight: 600; color: #9E9A94; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px; }
+              .qz-q { font-size: 17px; font-weight: 700; color: #1A1A1A; margin-bottom: 20px; line-height: 1.4; }
+              .qz-opt { padding: 12px 16px; border-radius: 8px; border: 1.5px solid #E8E8E8; font-size: 14px; font-weight: 500; margin-bottom: 8px; }
+              .qz-opt.sel { border-color: #F07828; background: #FEF0E6; color: #B84F1A; font-weight: 600; animation: qzSelPulse 2s ease-in-out 0.8s infinite; }
+            `}</style>
+            <div className="qz-bar-track"><div className="qz-bar-fill" /></div>
+            <div className="qz-label">Шаг 2 из 9 · Система налогообложения</div>
+            <div className="qz-q">Какую систему налогообложения вы применяете?</div>
+            {["УСН (доходы 6%)", "УСН (доходы минус расходы)", "ОСНО", "Патент / АУСН"].map((o, i) => (
+              <div key={o} className={`qz-opt${i === 0 ? " sel" : ""}`}>{o}</div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Team */}
+      <section id="team" style={{ maxWidth: 1100, margin: "0 auto", padding: "80px 24px" }}>
+        <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 16, marginBottom: 36 }}>
+          <h2 style={{ margin: 0, fontSize: 36, fontWeight: 800, letterSpacing: "-0.02em" }}>Ваши бухгалтеры</h2>
+          <Link href="/team" style={{ fontWeight: 600, fontSize: 15, color: "#F07828" }}>Вся команда →</Link>
+        </div>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24, alignItems: "start" }}>
+          <div style={{ position: "relative", height: 380, borderRadius: 12, overflow: "hidden" }}>
+            <Image src="/team/team-group.jpg" alt="Команда Доверительной Бухгалтерии" fill style={{ objectFit: "cover", objectPosition: "center" }} />
+          </div>
+          <div className="m-1col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+            {team.map(m => (
+              <div key={m.name} style={{ ...card, overflow: "hidden" }}>
+                <div style={{ height: 160, position: "relative" }}>
+                  <Image src={m.photo} alt={m.name} fill style={{ objectFit: "cover", objectPosition: "top" }} />
+                </div>
+                <div style={{ padding: "14px 16px" }}>
+                  <div style={{ fontSize: 14, fontWeight: 600 }}>{m.name}</div>
+                  <div style={{ fontSize: 12, color: "#6B6B6B", margin: "3px 0 6px" }}>{m.role}</div>
+                  {m.exp && <div style={{ fontSize: 11, color: "#F07828", fontWeight: 600 }}>{m.exp}</div>}
                 </div>
               </div>
             ))}
@@ -112,83 +214,41 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Calculator CTA */}
-      <section id="calculator" style={{ maxWidth: 1100, margin: "0 auto", padding: "80px 24px", textAlign: "center" }}>
-        <h2 style={{ margin: "0 0 12px", fontSize: 36, fontWeight: 800, letterSpacing: "-0.02em" }}>Подберём услуги под вашу ситуацию</h2>
-        <p style={{ margin: "0 auto 36px", fontSize: 17, color: "#6B6B6B", maxWidth: 560, lineHeight: 1.6 }}>9 вопросов — и вы узнаете, какое обслуживание подходит именно вашему бизнесу</p>
-        <div style={{ display: "flex", justifyContent: "center", gap: 40, marginBottom: 36, flexWrap: "wrap" }}>
-          {[["1", "Ответьте на вопросы"], ["2", "Получите рекомендации"], ["3", "Обсудите с бухгалтером"]].map(([n, t]) => (
-            <div key={n} style={{ maxWidth: 180 }}>
-              <div style={{ width: 44, height: 44, borderRadius: "50%", background: "#F07828", color: "#fff", fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 12px" }}>{n}</div>
-              <div style={{ fontSize: 14, color: "#3D3D3D", fontWeight: 500 }}>{t}</div>
-            </div>
-          ))}
-        </div>
-        <Link href="/calculator" className="btn-primary" style={{ height: 52, padding: "0 30px", fontSize: 16 }}>Начать расчёт</Link>
-      </section>
-
-      {/* Team */}
-      <section id="team" style={{ background: "#F5F5F5", borderTop: "1px solid #E8E8E8", borderBottom: "1px solid #E8E8E8" }}>
+      {/* Reviews */}
+      <section style={{ background: "#F5F5F5", borderTop: "1px solid #E8E8E8", borderBottom: "1px solid #E8E8E8" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", padding: "80px 24px" }}>
           <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 16, marginBottom: 36 }}>
-            <h2 style={{ margin: 0, fontSize: 36, fontWeight: 800, letterSpacing: "-0.02em" }}>Ваши бухгалтеры</h2>
-            <Link href="/team" style={{ fontWeight: 600, fontSize: 15, color: "#F07828" }}>Вся команда →</Link>
+            <h2 style={{ margin: 0, fontSize: 36, fontWeight: 800, letterSpacing: "-0.02em" }}>Что говорят клиенты</h2>
+            <a href="https://yandex.ru/maps/org/doveritelnaya_bukhgalteriya/162739002915/reviews/" target="_blank" rel="noopener noreferrer" style={{ fontWeight: 600, fontSize: 15, color: "#F07828" }}>Все отзывы →</a>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24, alignItems: "start" }}>
-            <div style={{ position: "relative", height: 380, borderRadius: 12, overflow: "hidden" }}>
-              <Image src="/team/team-group.jpg" alt="Команда Доверительной Бухгалтерии" fill style={{ objectFit: "cover", objectPosition: "center" }} />
-            </div>
-            <div className="m-1col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
-              {team.map(m => (
-                <div key={m.name} style={{ ...card, overflow: "hidden" }}>
-                  <div style={{ height: 160, position: "relative" }}>
-                    <Image src={m.photo} alt={m.name} fill style={{ objectFit: "cover", objectPosition: "top" }} />
+          <div className="m-1col t-2col" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 20 }}>
+            {[
+              { name: "Роман Б.", date: "15 мая 2025", text: "Обращался в «Доверительную бухгалтерию» за разовой консультацией по налогам в сфере коммерческой недвижимости — нужно было подготовить ответ в ФНС на претензию. Галина и Юлия детально разобрали ситуацию, подсветили риски и помогли сформулировать грамотный и аргументированный ответ." },
+              { name: "Максим Отт", date: "6 февраля 2025", text: "Вчера провели консультацию с Галиной, которая длилась около двух часов. Она подробно ответила на все наши вопросы, касающиеся налогового, бухгалтерского и управленческого учёта. Галина проявила высокий профессионализм и глубокие знания в своей области." },
+              { name: "Ирина Б.", date: "15 мая 2025", text: "Спасибо Галине и команде за профессионализм и поддержку. Обратилась за консультацией для подготовки ответа в ФНС. После изучения ситуации и документов оперативно получила ответ и общее понимание как мне следует поступить. Рекомендую!" },
+              { name: "Скульптор Коваль", date: "22 июля 2025", text: "Огромное спасибо! Я думала никогда не разберусь в своей ситуации. К трём бухгалтерам обратилась — голова уже закипала. Здесь девочки за десять минут поняли где произошёл сбой и всё объяснили. Профессионалы!" },
+              { name: "Владислав П.", date: "9 февраля 2025", text: "Потрясающая компания, грамотные специалисты, провели полный аудит, подсветили все слабые стороны, помогли выстроить всю работу. Однозначно рекомендую!" },
+              { name: "Кирилл", date: "2 апреля 2025", text: "Спасибо Галине, как всегда всё чётко и по существу. Получил больше, чем планировал. Будем долго и плотно сотрудничать." },
+            ].map(r => (
+              <div key={r.name + r.date} style={{ ...card, padding: "22px 22px 20px", display: "flex", flexDirection: "column", gap: 12 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                  <div style={{ width: 40, height: 40, borderRadius: "50%", background: "#3D3D3D", color: "#fff", fontWeight: 700, fontSize: 16, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>{r.name[0]}</div>
+                  <div>
+                    <div style={{ fontSize: 14, fontWeight: 700 }}>{r.name}</div>
+                    <div style={{ fontSize: 12, color: "#9E9A94" }}>{r.date}</div>
                   </div>
-                  <div style={{ padding: "14px 16px" }}>
-                    <div style={{ fontSize: 14, fontWeight: 600 }}>{m.name}</div>
-                    <div style={{ fontSize: 12, color: "#6B6B6B", margin: "3px 0 6px" }}>{m.role}</div>
-                    {m.exp && <div style={{ fontSize: 11, color: "#F07828", fontWeight: 600 }}>{m.exp}</div>}
-                  </div>
+                  <div style={{ marginLeft: "auto", fontSize: 11, color: "#F07828", fontWeight: 600, background: "#FEF0E6", padding: "3px 8px", borderRadius: 4 }}>Яндекс</div>
                 </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Reviews */}
-      <section style={{ maxWidth: 1100, margin: "0 auto", padding: "80px 24px" }}>
-        <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 16, marginBottom: 36 }}>
-          <h2 style={{ margin: 0, fontSize: 36, fontWeight: 800, letterSpacing: "-0.02em" }}>Что говорят клиенты</h2>
-          <a href="https://yandex.ru/maps/org/doveritelnaya_bukhgalteriya/162739002915/reviews/" target="_blank" rel="noopener noreferrer" style={{ fontWeight: 600, fontSize: 15, color: "#F07828" }}>Все отзывы →</a>
-        </div>
-        <div className="m-1col t-2col" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 20 }}>
-          {[
-            { name: "Роман Б.", date: "15 мая 2025", text: "Обращался в «Доверительную бухгалтерию» за разовой консультацией по налогам в сфере коммерческой недвижимости — нужно было подготовить ответ в ФНС на претензию. Галина и Юлия детально разобрали ситуацию, подсветили риски и помогли сформулировать грамотный и аргументированный ответ." },
-            { name: "Максим Отт", date: "6 февраля 2025", text: "Вчера провели консультацию с Галиной, которая длилась около двух часов. Она подробно ответила на все наши вопросы, касающиеся налогового, бухгалтерского и управленческого учёта. Галина проявила высокий профессионализм и глубокие знания в своей области." },
-            { name: "Ирина Б.", date: "15 мая 2025", text: "Спасибо Галине и команде за профессионализм и поддержку. Обратилась за консультацией для подготовки ответа в ФНС. После изучения ситуации и документов оперативно получила ответ и общее понимание как мне следует поступить. Рекомендую!" },
-            { name: "Скульптор Коваль", date: "22 июля 2025", text: "Огромное спасибо! Я думала никогда не разберусь в своей ситуации. К трём бухгалтерам обратилась — голова уже закипала. Здесь девочки за десять минут поняли где произошёл сбой и всё объяснили. Профессионалы!" },
-            { name: "Владислав П.", date: "9 февраля 2025", text: "Потрясающая компания, грамотные специалисты, провели полный аудит, подсветили все слабые стороны, помогли выстроить всю работу. Однозначно рекомендую!" },
-            { name: "Кирилл", date: "2 апреля 2025", text: "Спасибо Галине, как всегда всё чётко и по существу. Получил больше, чем планировал. Будем долго и плотно сотрудничать." },
-          ].map(r => (
-            <div key={r.name + r.date} style={{ ...card, padding: "22px 22px 20px", display: "flex", flexDirection: "column", gap: 12 }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                <div style={{ width: 40, height: 40, borderRadius: "50%", background: "#3D3D3D", color: "#fff", fontWeight: 700, fontSize: 16, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>{r.name[0]}</div>
-                <div>
-                  <div style={{ fontSize: 14, fontWeight: 700 }}>{r.name}</div>
-                  <div style={{ fontSize: 12, color: "#9E9A94" }}>{r.date}</div>
-                </div>
-                <div style={{ marginLeft: "auto", fontSize: 11, color: "#F07828", fontWeight: 600, background: "#FEF0E6", padding: "3px 8px", borderRadius: 4 }}>Яндекс</div>
+                <div style={{ color: "#F5A623", fontSize: 15, letterSpacing: 1 }}>★★★★★</div>
+                <p style={{ margin: 0, fontSize: 14, lineHeight: 1.65, color: "#3D3D3D" }}>{r.text}</p>
               </div>
-              <div style={{ color: "#F5A623", fontSize: 15, letterSpacing: 1 }}>★★★★★</div>
-              <p style={{ margin: 0, fontSize: 14, lineHeight: 1.65, color: "#3D3D3D" }}>{r.text}</p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
       {/* Articles */}
-      <section style={{ background: "#F5F5F5", borderTop: "1px solid #E8E8E8" }}>
+      <section>
         <div style={{ maxWidth: 1100, margin: "0 auto", padding: "80px 24px" }}>
           <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 16, marginBottom: 36 }}>
             <h2 style={{ margin: 0, fontSize: 36, fontWeight: 800, letterSpacing: "-0.02em" }}>Полезные материалы</h2>
@@ -196,7 +256,7 @@ export default function HomePage() {
           </div>
           <div className="m-1col t-2col" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 24 }}>
             {articles.map(a => (
-              <a key={a.title} href={a.href} target="_blank" rel="noopener noreferrer"
+              <Link key={a.title} href={a.href}
                 style={{ ...card, textDecoration: "none", color: "#1A1A1A", display: "block" }}>
                 <div style={{ height: 160, background: a.bg, position: "relative", overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center" }}>
                   {a.photo
@@ -207,12 +267,17 @@ export default function HomePage() {
                 <div style={{ padding: "18px 20px" }}>
                   <span style={{ display: "inline-block", background: "#FEF0E6", color: "#B84F1A", fontSize: 11, fontWeight: 600, padding: "3px 8px", borderRadius: 4, marginBottom: 10 }}>{a.tag}</span>
                   <div style={{ fontSize: 16, fontWeight: 600, lineHeight: 1.4, marginBottom: 8 }}>{a.title}</div>
-                  <div style={{ fontSize: 12, color: "#F07828", fontWeight: 600 }}>Читать на buhstart.ru →</div>
+                  <div style={{ fontSize: 12, color: "#F07828", fontWeight: 600 }}>Читать →</div>
                 </div>
-              </a>
+              </Link>
             ))}
           </div>
         </div>
+      </section>
+
+      {/* FAQ */}
+      <section style={{ background: "#F5F5F5", borderTop: "1px solid #E8E8E8" }}>
+        <FaqSection />
       </section>
 
       {/* Consultation form */}
