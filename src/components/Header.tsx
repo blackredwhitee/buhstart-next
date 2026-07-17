@@ -38,7 +38,7 @@ export default function Header() {
     }}>
       <div className="container" style={{ display: "flex", alignItems: "center", height: "100%" }}>
         <Link href="/" style={{ display: "flex", alignItems: "center", marginRight: "auto", gap: 10 }}>
-          <Image src="/logo.png" alt="Доверительная Бухгалтерия" width={140} height={40} style={{ height: 40, width: "auto", objectFit: "contain" }} priority />
+          <Image src="/logo.png" alt="Доверительная Бухгалтерия" width={200} height={56} style={{ height: 56, width: "auto", objectFit: "contain" }} priority />
         </Link>
 
         <nav style={{ display: "flex", gap: 28, alignItems: "center" }} className="d-hide-mobile">
