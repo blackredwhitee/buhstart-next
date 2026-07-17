@@ -158,9 +158,32 @@ export default function HomePage() {
 
       {/* Reviews */}
       <section style={{ maxWidth: 1100, margin: "0 auto", padding: "80px 24px" }}>
-        <h2 style={{ margin: "0 0 36px", fontSize: 36, fontWeight: 800, letterSpacing: "-0.02em" }}>Что говорят клиенты</h2>
-        <div style={{ height: 600, overflow: "hidden", borderRadius: 12, border: "1px solid #E8E8E8" }}>
-          <iframe src="https://yandex.ru/maps-reviews-widget/162739002915?comments" style={{ width: "100%", height: "100%", border: "none" }} title="Отзывы на Яндекс Картах" />
+        <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 16, marginBottom: 36 }}>
+          <h2 style={{ margin: 0, fontSize: 36, fontWeight: 800, letterSpacing: "-0.02em" }}>Что говорят клиенты</h2>
+          <a href="https://yandex.ru/maps/org/doveritelnaya_bukhgalteriya/162739002915/reviews/" target="_blank" rel="noopener noreferrer" style={{ fontWeight: 600, fontSize: 15, color: "#F07828" }}>Все отзывы →</a>
+        </div>
+        <div className="m-1col t-2col" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 20 }}>
+          {[
+            { name: "Роман Б.", date: "15 мая 2025", text: "Обращался в «Доверительную бухгалтерию» за разовой консультацией по налогам в сфере коммерческой недвижимости — нужно было подготовить ответ в ФНС на претензию. Галина и Юлия детально разобрали ситуацию, подсветили риски и помогли сформулировать грамотный и аргументированный ответ." },
+            { name: "Максим Отт", date: "6 февраля 2025", text: "Вчера провели консультацию с Галиной, которая длилась около двух часов. Она подробно ответила на все наши вопросы, касающиеся налогового, бухгалтерского и управленческого учёта. Галина проявила высокий профессионализм и глубокие знания в своей области." },
+            { name: "Ирина Б.", date: "15 мая 2025", text: "Спасибо Галине и команде за профессионализм и поддержку. Обратилась за консультацией для подготовки ответа в ФНС. После изучения ситуации и документов оперативно получила ответ и общее понимание как мне следует поступить. Рекомендую!" },
+            { name: "Скульптор Коваль", date: "22 июля 2025", text: "Огромное спасибо! Я думала никогда не разберусь в своей ситуации. К трём бухгалтерам обратилась — голова уже закипала. Здесь девочки за десять минут поняли где произошёл сбой и всё объяснили. Профессионалы!" },
+            { name: "Владислав П.", date: "9 февраля 2025", text: "Потрясающая компания, грамотные специалисты, провели полный аудит, подсветили все слабые стороны, помогли выстроить всю работу. Однозначно рекомендую!" },
+            { name: "Клиент", date: "2025", text: "С Галиной была просто беседа двух одноклубников, но за очень короткое время я получил довольно исчерпывающую информацию по интересующим меня бухгалтерским вопросам! Рекомендую!" },
+          ].map(r => (
+            <div key={r.name + r.date} style={{ ...card, padding: "22px 22px 20px", display: "flex", flexDirection: "column", gap: 12 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                <div style={{ width: 40, height: 40, borderRadius: "50%", background: "#3D3D3D", color: "#fff", fontWeight: 700, fontSize: 16, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>{r.name[0]}</div>
+                <div>
+                  <div style={{ fontSize: 14, fontWeight: 700 }}>{r.name}</div>
+                  <div style={{ fontSize: 12, color: "#9E9A94" }}>{r.date}</div>
+                </div>
+                <div style={{ marginLeft: "auto", fontSize: 11, color: "#F07828", fontWeight: 600, background: "#FEF0E6", padding: "3px 8px", borderRadius: 4 }}>Яндекс</div>
+              </div>
+              <div style={{ color: "#F5A623", fontSize: 15, letterSpacing: 1 }}>★★★★★</div>
+              <p style={{ margin: 0, fontSize: 14, lineHeight: 1.65, color: "#3D3D3D" }}>{r.text}</p>
+            </div>
+          ))}
         </div>
       </section>
 
