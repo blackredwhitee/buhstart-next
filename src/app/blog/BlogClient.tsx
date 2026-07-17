@@ -3,25 +3,28 @@ import { useState } from "react";
 import Link from "next/link";
 
 const POSTS = [
-  { tag: "Налоговая", title: "Как налоговая видит ваш бизнес", href: "https://buhstart.ru/tpost/cnye6z2of1-kak-nalogovaya-vidit-vash-biznes" },
-  { tag: "Налоговая", title: "Что делать, если пришло письмо из ФНС", href: "https://buhstart.ru/tpost/918933y7o1-chto-delat-esli-prishlo-pismo-iz-fns" },
-  { tag: "Налоги", title: "Главные ошибки предпринимателей в налогах", href: "https://buhstart.ru/tpost/gg5k5cyxs1-glavnie-oshibki-predprinimatelei-v-nalog" },
-  { tag: "Финансы", title: "Зачем предпринимателю понимать свои цифры", href: "https://buhstart.ru/tpost/s58foxd571-zachem-predprinimatelyu-ponimat-svoi-tsi" },
-  { tag: "Бизнес", title: "Почему предприниматели откладывают бухгалтерию", href: "https://buhstart.ru/tpost/v1l6jtxy71-pochemu-predprinimateli-otkladivayut-buh" },
-  { tag: "Финансы", title: "Куда утекают деньги в бизнесе", href: "https://buhstart.ru/tpost/10sx017v61-kuda-utekayut-dengi-v-biznese" },
-  { tag: "Налоговая", title: "Почему предприниматели боятся налоговой", href: "https://buhstart.ru/tpost/d3f7f7re01-pochemu-predprinimateli-boyatsya-nalogov" },
-  { tag: "Бизнес", title: "Почему предприниматели устают не от бизнеса", href: "https://buhstart.ru/tpost/pcbt3evp01-pochemu-predprinimateli-ustayut-ne-ot-bi" },
-  { tag: "ИП и ООО", title: "Как делят ООО, если один партнёр уходит", href: "https://buhstart.ru/tpost/abkl2u8bn1-kak-delyat-ooo-esli-odin-partnyor-uhodit" },
-  { tag: "Финансы", title: "Почему богатый бизнес может быть убыточным", href: "https://buhstart.ru/tpost/nx0520x5c1-pochemu-bogatii-biznes-mozhet-bit-ubitoc" },
-  { tag: "Налоги", title: "Почему низкий налог — не всегда выгодно", href: "https://buhstart.ru/tpost/gl75m4h951-pochemu-nizkii-nalog-ne-vsegda-vigodno" },
-  { tag: "Налоги", title: "Почему систему налогообложения важно выбирать правильно", href: "https://buhstart.ru/tpost/3t5j2glf01-pochemu-sistemu-nalogooblozheniya-vazhno" },
-  { tag: "ИП и ООО", title: "ООО или ИП", href: "https://buhstart.ru/tpost/m9a39ch961-ooo-ili-ip" },
-  { tag: "Налоги", title: "Каждый платит налоги", href: "https://buhstart.ru/tpost/fmr3sxkvt1-kazhdii-platit-nalogi" },
-  { tag: "ИП и ООО", title: "ООО: когда бизнес уже посерьёзнее", href: "https://buhstart.ru/tpost/v8apys99t1-ooo-kogda-biznes-uzhe-posereznee" },
-  { tag: "Бизнес", title: "К чему по анализу движется малый бизнес", href: "https://buhstart.ru/tpost/pfsocxuzz1-k-chemu-po-analizu-dvizhetsya-malii-bizn" },
-  { tag: "Налоги", title: "Как выбрать систему налогообложения и не переплачивать", href: "https://buhstart.ru/tpost/zh75d76pb1-kak-vibrat-sistemu-nalogooblozheniya-i-n" },
-  { tag: "Бизнес", title: "Сотрудник уволился и унёс базу клиентов", href: "https://buhstart.ru/tpost/a7ih45m8d1-sotrudnik-uvolilsya-i-unyos-bazu-kliento" },
-  { tag: "Налоги", title: "Вернуть 13% за курсы", href: "https://buhstart.ru/tpost/dgjjc2cdj1-vernut-13-za-kursi" },
+  { tag: "Налоговая", title: "Как налоговая видит ваш бизнес", href: "/blog/kak-nalogovaya-vidit-vash-biznes" },
+  { tag: "Налоговая", title: "Что делать, если пришло письмо из ФНС", href: "/blog/chto-delat-esli-prishlo-pismo-iz-fns" },
+  { tag: "Налоги", title: "Главные ошибки предпринимателей в налогах", href: "/blog/glavnye-oshibki-predprinimatelei-v-nalogakh" },
+  { tag: "Финансы", title: "Зачем предпринимателю понимать свои цифры", href: "/blog/zachem-predprinimatelyu-ponimat-svoi-tsifry" },
+  { tag: "Бизнес", title: "Почему предприниматели откладывают бухгалтерию", href: "/blog/pochemu-predprinimateli-otkladyvayut-bukhgalteriyu" },
+  { tag: "Финансы", title: "Куда утекают деньги в бизнесе", href: "/blog/kuda-utekayut-dengi-v-biznese" },
+  { tag: "Налоговая", title: "Почему предприниматели боятся налоговой", href: "/blog/pochemu-predprinimateli-boyatsya-nalogovoy" },
+  { tag: "Бизнес", title: "Почему предприниматели устают не от бизнеса", href: "/blog/pochemu-predprinimateli-ustayut-ne-ot-biznesa" },
+  { tag: "ИП и ООО", title: "Как делят ООО, если один партнёр уходит", href: "/blog/kak-delyat-ooo-esli-odin-partner-ukhodit" },
+  { tag: "Финансы", title: "Почему богатый бизнес может быть убыточным", href: "/blog/pochemu-bogatyy-biznes-mozhet-byt-ubytochnym" },
+  { tag: "Налоги", title: "Почему низкий налог — не всегда выгодно", href: "/blog/pochemu-nizkiy-nalog-ne-vsegda-vygodno" },
+  { tag: "Налоги", title: "Почему систему налогообложения важно пересматривать", href: "/blog/pochemu-sistemu-nalogooblozheniya-vazhno-peresmatrivat" },
+  { tag: "ИП и ООО", title: "ООО или ИП", href: "/blog/ooo-ili-ip" },
+  { tag: "Налоги", title: "Каждый платит налоги", href: "/blog/kazhdyy-platit-nalogi" },
+  { tag: "ИП и ООО", title: "ООО: когда бизнес уже посерьёзнее", href: "/blog/ooo-kogda-biznes-uzhe-posereznee" },
+  { tag: "Бизнес", title: "К чему движется малый бизнес в 2026", href: "/blog/k-chemu-dvizhetsia-malyy-biznes-2026" },
+  { tag: "ИП и ООО", title: "Организационно-правовые формы бизнеса", href: "/blog/organizatsionno-pravovye-formy-biznesa" },
+  { tag: "Налоги", title: "Как выбрать систему налогообложения и не переплачивать", href: "/blog/kak-vybrat-sistemu-nalogooblozheniya" },
+  { tag: "Бизнес", title: "Сотрудник уволился и унёс базу клиентов", href: "/blog/sotrudnik-uvolilas-i-unos-bazu-klientov" },
+  { tag: "Бизнес", title: "Проверка контрагента: все делают вид, что проверяют", href: "/blog/proverka-kontragenta" },
+  { tag: "ИП и ООО", title: "Закрыть ИП и открыть заново, чтобы сэкономить", href: "/blog/zakryt-ip-i-otkryt-zanovo" },
+  { tag: "Налоги", title: "Вернуть 13% за курсы", href: "/blog/vernut-13-za-kursy" },
 ];
 
 const TAGS = ["Все", "Налоги", "Налоговая", "Финансы", "Бизнес", "ИП и ООО"];
@@ -50,14 +53,14 @@ export default function BlogClient() {
       <section style={{ maxWidth: 1100, margin: "0 auto", padding: "16px 24px 80px" }}>
         <div className="m-1col t-2col" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 20 }}>
           {posts.map(p => (
-            <a key={p.href} href={p.href} target="_blank" rel="noopener noreferrer"
+            <Link key={p.href} href={p.href}
               style={{ textDecoration: "none", color: "#1A1A1A", background: "#fff", border: "1px solid #E8E8E8", borderRadius: 10, padding: 22, display: "flex", flexDirection: "column", gap: 12, borderBottom: "3px solid #E8E8E8", transition: "all 150ms ease" }}
               onMouseEnter={e => { const el = e.currentTarget; el.style.boxShadow = "0 4px 20px rgba(0,0,0,0.1)"; el.style.transform = "translateY(-2px)"; el.style.borderBottomColor = "#F07828"; }}
               onMouseLeave={e => { const el = e.currentTarget; el.style.boxShadow = "none"; el.style.transform = "none"; el.style.borderBottomColor = "#E8E8E8"; }}>
               <span style={{ alignSelf: "flex-start", background: "#FEF0E6", color: "#B84F1A", fontSize: 11, fontWeight: 600, padding: "3px 8px", borderRadius: 4 }}>{p.tag}</span>
               <div style={{ fontSize: 17, fontWeight: 600, lineHeight: 1.45, flex: 1 }}>{p.title}</div>
-              <div style={{ fontSize: 13, fontWeight: 600, color: "#F07828" }}>Читать на buhstart.ru →</div>
-            </a>
+              <div style={{ fontSize: 13, fontWeight: 600, color: "#F07828" }}>Читать →</div>
+            </Link>
           ))}
         </div>
       </section>

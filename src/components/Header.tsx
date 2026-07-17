@@ -15,10 +15,14 @@ const nav = [
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [showBar, setShowBar] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10);
-    window.addEventListener("scroll", onScroll);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 10);
+      setShowBar(window.scrollY > 200);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
@@ -89,7 +93,22 @@ export default function Header() {
           .d-hide-mobile { display: none !important; }
           .burger-btn { display: flex !important; }
         }
+        @media (min-width: 768px) {
+          .mobile-bar { display: none !important; }
+        }
       `}</style>
+
+      {/* Mobile bottom bar — appears after 200px scroll */}
+      {showBar && !menuOpen && (
+        <div className="mobile-bar" style={{ position: "fixed", left: 0, right: 0, bottom: 0, zIndex: 150, height: 56, background: "#fff", borderTop: "1px solid #E8E8E8", display: "flex", gap: 10, padding: "6px 12px", boxSizing: "border-box" }}>
+          <Link href="/contacts#form" style={{ flex: 1, textDecoration: "none", background: "#F07828", color: "#fff", fontWeight: 600, fontSize: 15, borderRadius: 6, display: "flex", alignItems: "center", justifyContent: "center" }}>
+            Записаться
+          </Link>
+          <a href="tel:+74957788168" aria-label="Позвонить" style={{ width: 44, flexShrink: 0, textDecoration: "none", border: "1.5px solid #3D3D3D", borderRadius: 6, display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z" stroke="#3D3D3D" strokeWidth="2" strokeLinejoin="round"/></svg>
+          </a>
+        </div>
+      )}
     </header>
   );
 }

@@ -40,7 +40,7 @@ export default function ContactsPage() {
         <div style={{ maxWidth: 640, margin: "0 auto", padding: "72px 24px", textAlign: "center" }}>
           <h2 style={{ margin: "0 0 10px", fontSize: 32, fontWeight: 800 }}>Записаться на консультацию</h2>
           <p style={{ margin: "0 0 28px", fontSize: 15, color: "#6B6B6B" }}>Разберём вашу ситуацию и предложим оптимальное решение.</p>
-          <ConsultForm />
+          <ConsultForm showDatetime />
         </div>
       </section>
     </>
