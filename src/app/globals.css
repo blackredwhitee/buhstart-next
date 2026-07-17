@@ -93,6 +93,52 @@ img { max-width: 100%; }
   padding: 0 24px;
 }
 
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 24px;
+  background: #F07828;
+  color: #fff !important;
+  font-family: 'Golos Text', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 120ms ease, transform 120ms ease;
+}
+
+.btn-primary:hover {
+  background: #E56800;
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 24px;
+  background: transparent;
+  color: #F07828 !important;
+  font-family: 'Golos Text', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  border: 2px solid #F07828;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 120ms ease, transform 120ms ease;
+}
+
+.btn-secondary:hover {
+  background: #FEF0E6;
+  transform: translateY(-1px);
+}
+
 @media (max-width: 767px) {
   body { font-size: 15px; padding-bottom: 64px; }
 }
