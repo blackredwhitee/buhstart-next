@@ -34,9 +34,9 @@ const reviews = [
 ];
 
 const articles = [
-  { href: "https://buhstart.ru/tpost/cnye6z2of1-kak-nalogovaya-vidit-vash-biznes", bg: "#3D3D3D", glyph: "ФНС", tag: "Налоговая", title: "Как налоговая видит ваш бизнес" },
-  { href: "https://buhstart.ru/tpost/918933y7o1-chto-delat-esli-prishlo-pismo-iz-fns", bg: "#F07828", glyph: "✉", tag: "Налоговая", title: "Что делать, если пришло письмо из ФНС" },
-  { href: "https://buhstart.ru/tpost/10sx017v61-kuda-utekayut-dengi-v-biznese", bg: "#6B6B6B", glyph: "₽", tag: "Финансы", title: "Куда утекают деньги в бизнесе" },
+  { href: "https://buhstart.ru/tpost/cnye6z2of1-kak-nalogovaya-vidit-vash-biznes", photo: null, bg: "#1A1A1A", glyph: "ФНС", tag: "Налоговая", title: "Как налоговая видит ваш бизнес" },
+  { href: "https://buhstart.ru/tpost/918933y7o1-chto-delat-esli-prishlo-pismo-iz-fns", photo: "/articles/pismo-fns.png", bg: "#F07828", glyph: "✉", tag: "Налоговая", title: "Что делать, если пришло письмо из ФНС" },
+  { href: "https://buhstart.ru/tpost/10sx017v61-kuda-utekayut-dengi-v-biznese", photo: "/articles/dengi.jpg", bg: "#6B6B6B", glyph: "₽", tag: "Финансы", title: "Куда утекают деньги в бизнесе" },
 ];
 
 const card = { background: "#fff", border: "1px solid #E8E8E8", borderRadius: 10, transition: "all 150ms ease" } as React.CSSProperties;
@@ -175,7 +175,12 @@ export default function HomePage() {
             {articles.map(a => (
               <a key={a.title} href={a.href} target="_blank" rel="noopener noreferrer"
                 style={{ ...card, textDecoration: "none", color: "#1A1A1A", display: "block" }}>
-                <div style={{ height: 160, background: a.bg, display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontSize: 34, fontWeight: 800 }}>{a.glyph}</div>
+                <div style={{ height: 160, background: a.bg, position: "relative", overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  {a.photo
+                    ? <Image src={a.photo} alt={a.title} fill style={{ objectFit: "cover" }} />
+                    : <span style={{ color: "#fff", fontSize: 34, fontWeight: 800 }}>{a.glyph}</span>
+                  }
+                </div>
                 <div style={{ padding: "18px 20px" }}>
                   <span style={{ display: "inline-block", background: "#FEF0E6", color: "#B84F1A", fontSize: 11, fontWeight: 600, padding: "3px 8px", borderRadius: 4, marginBottom: 10 }}>{a.tag}</span>
                   <div style={{ fontSize: 16, fontWeight: 600, lineHeight: 1.4, marginBottom: 8 }}>{a.title}</div>
