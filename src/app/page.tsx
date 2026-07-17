@@ -34,9 +34,9 @@ const reviews = [
 ];
 
 const articles = [
-  { href: "https://buhstart.ru/tpost/cnye6z2of1-kak-nalogovaya-vidit-vash-biznes", photo: null, bg: "#1A1A1A", glyph: "ФНС", tag: "Налоговая", title: "Как налоговая видит ваш бизнес" },
-  { href: "https://buhstart.ru/tpost/918933y7o1-chto-delat-esli-prishlo-pismo-iz-fns", photo: "/articles/pismo-fns.png", bg: "#F07828", glyph: "✉", tag: "Налоговая", title: "Что делать, если пришло письмо из ФНС" },
-  { href: "https://buhstart.ru/tpost/10sx017v61-kuda-utekayut-dengi-v-biznese", photo: "/articles/dengi.jpg", bg: "#6B6B6B", glyph: "₽", tag: "Финансы", title: "Куда утекают деньги в бизнесе" },
+  { href: "/blog/kak-nalogovaya-vidit-vash-biznes", photo: null, bg: "#1A1A1A", glyph: "ФНС", tag: "Налоговая", title: "Как налоговая видит ваш бизнес" },
+  { href: "/blog/chto-delat-esli-prishlo-pismo-iz-fns", photo: "/articles/pismo-fns.png", bg: "#F07828", glyph: "✉", tag: "Налоговая", title: "Что делать, если пришло письмо из ФНС" },
+  { href: "/blog/kuda-utekayut-dengi-v-biznese", photo: "/articles/dengi.jpg", bg: "#6B6B6B", glyph: "₽", tag: "Финансы", title: "Куда утекают деньги в бизнесе" },
 ];
 
 const card = { background: "#fff", border: "1px solid #E8E8E8", borderRadius: 10, transition: "all 150ms ease" } as React.CSSProperties;
