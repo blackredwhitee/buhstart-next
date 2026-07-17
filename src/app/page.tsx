@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import ConsultForm from "@/components/ConsultForm";
 import ServiceCard from "@/components/ServiceCard";
 
@@ -19,10 +20,10 @@ const advantages = [
 ];
 
 const team = [
-  { name: "Горелкина Галина Викторовна", role: "Руководитель компании", exp: "20+ лет опыта" },
-  { name: "Самылова Ирина", role: "Главный бухгалтер, аудитор", exp: "в компании более 20 лет" },
-  { name: "Тимофеева Юлия", role: "Главный бухгалтер, аудитор, консультант", exp: "в компании 3 года" },
-  { name: "Инна Пысларь", role: "Старший бухгалтер", exp: "" },
+  { name: "Самылова Ирина", role: "Главный бухгалтер, аудитор", exp: "в компании более 20 лет", photo: "/team/bx_1740173516479.jpg" },
+  { name: "Тимофеева Юлия", role: "Главный бухгалтер, аудитор, консультант", exp: "в компании 3 года", photo: "/team/MVV00348.jpg" },
+  { name: "Анастасия Зайцева", role: "Специалист по управленческому учёту", exp: "работает более 3 лет", photo: "/team/meOsa7UsjTojpg.png" },
+  { name: "Инна Пысларь", role: "Старший бухгалтер", exp: "", photo: "/team/MVV00359.jpg" },
 ];
 
 const reviews = [
@@ -131,19 +132,26 @@ export default function HomePage() {
         <div style={{ maxWidth: 1100, margin: "0 auto", padding: "80px 24px" }}>
           <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 16, marginBottom: 36 }}>
             <h2 style={{ margin: 0, fontSize: 36, fontWeight: 800, letterSpacing: "-0.02em" }}>Ваши бухгалтеры</h2>
-            <Link href="/team" style={{ fontWeight: 600, fontSize: 15, color: "#F07828" }}>Познакомиться с командой →</Link>
+            <Link href="/team" style={{ fontWeight: 600, fontSize: 15, color: "#F07828" }}>Вся команда →</Link>
           </div>
-          <div className="m-scroll t-2col" style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 20 }}>
-            {team.map(m => (
-              <div key={m.name} style={{ ...card, overflow: "hidden" }}>
-                <div style={{ height: 220, background: "#E8E8E8", display: "flex", alignItems: "center", justifyContent: "center", color: "#9E9A94", fontSize: 13 }}>Фото</div>
-                <div style={{ padding: "18px 20px" }}>
-                  <div style={{ fontSize: 15, fontWeight: 600 }}>{m.name}</div>
-                  <div style={{ fontSize: 13, color: "#6B6B6B", margin: "3px 0 8px" }}>{m.role}</div>
-                  {m.exp && <div style={{ fontSize: 12, color: "#F07828", fontWeight: 600 }}>{m.exp}</div>}
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24, alignItems: "start" }}>
+            <div style={{ position: "relative", height: 380, borderRadius: 12, overflow: "hidden" }}>
+              <Image src="/team/team-group.jpg" alt="Команда Доверительной Бухгалтерии" fill style={{ objectFit: "cover", objectPosition: "center" }} />
+            </div>
+            <div className="m-1col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+              {team.map(m => (
+                <div key={m.name} style={{ ...card, overflow: "hidden" }}>
+                  <div style={{ height: 160, position: "relative" }}>
+                    <Image src={m.photo} alt={m.name} fill style={{ objectFit: "cover", objectPosition: "top" }} />
+                  </div>
+                  <div style={{ padding: "14px 16px" }}>
+                    <div style={{ fontSize: 14, fontWeight: 600 }}>{m.name}</div>
+                    <div style={{ fontSize: 12, color: "#6B6B6B", margin: "3px 0 6px" }}>{m.role}</div>
+                    {m.exp && <div style={{ fontSize: 11, color: "#F07828", fontWeight: 600 }}>{m.exp}</div>}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
