@@ -151,25 +151,8 @@ export default function HomePage() {
       {/* Reviews */}
       <section style={{ maxWidth: 1100, margin: "0 auto", padding: "80px 24px" }}>
         <h2 style={{ margin: "0 0 36px", fontSize: 36, fontWeight: 800, letterSpacing: "-0.02em" }}>Что говорят клиенты</h2>
-        <div className="m-1col" style={{ display: "grid", gridTemplateColumns: "2fr 1fr", gap: 24, alignItems: "start" }}>
-          <div className="m-1col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
-            {reviews.map(r => (
-              <div key={r.name} style={{ ...card, padding: 20 }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
-                  <div style={{ width: 40, height: 40, borderRadius: "50%", background: "#3D3D3D", color: "#fff", fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center" }}>{r.initial}</div>
-                  <div>
-                    <div style={{ fontSize: 14, fontWeight: 600 }}>{r.name}</div>
-                    <div style={{ fontSize: 12, color: "#6B6B6B" }}>{r.org}</div>
-                  </div>
-                </div>
-                <div style={{ color: "#F07828", fontSize: 14, letterSpacing: 2, marginBottom: 8 }}>★★★★★</div>
-                <div style={{ fontSize: 13, lineHeight: 1.6, color: "#3D3D3D" }}>{r.text}</div>
-              </div>
-            ))}
-          </div>
-          <div style={{ height: 520, overflow: "hidden", position: "relative" }}>
-            <iframe src="https://yandex.ru/maps-reviews-widget/162739002915?comments" style={{ width: "100%", height: "100%", border: "1px solid #E8E8E8", borderRadius: 10, boxSizing: "border-box" }} title="Отзывы на Яндекс Картах" />
-          </div>
+        <div style={{ height: 600, overflow: "hidden", borderRadius: 12, border: "1px solid #E8E8E8" }}>
+          <iframe src="https://yandex.ru/maps-reviews-widget/162739002915?comments" style={{ width: "100%", height: "100%", border: "none" }} title="Отзывы на Яндекс Картах" />
         </div>
       </section>
 
