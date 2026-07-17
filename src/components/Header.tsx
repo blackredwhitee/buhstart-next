@@ -37,9 +37,8 @@ export default function Header() {
       boxShadow: scrolled ? "0 1px 8px rgba(0,0,0,0.06)" : "none",
     }}>
       <div className="container" style={{ display: "flex", alignItems: "center", height: "100%" }}>
-        <Link href="/" style={{ display: "flex", alignItems: "center", marginRight: "auto", fontWeight: 800, fontSize: 18, color: "#1A1A1A", gap: 8 }}>
-          <span style={{ display: "inline-block", width: 36, height: 36, background: "#F07828", borderRadius: 6 }} />
-          Доверительная<br/>Бухгалтерия
+        <Link href="/" style={{ display: "flex", alignItems: "center", marginRight: "auto", gap: 10 }}>
+          <Image src="/logo.png" alt="Доверительная Бухгалтерия" width={140} height={40} style={{ height: 40, width: "auto", objectFit: "contain" }} priority />
         </Link>
 
         <nav style={{ display: "flex", gap: 28, alignItems: "center" }} className="d-hide-mobile">
