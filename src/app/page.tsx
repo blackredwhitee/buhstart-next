@@ -216,19 +216,34 @@ export default function HomePage() {
       </section>
 
       {/* Consultation form */}
-      <section id="zapis" style={{ background: "#3D3D3D" }}>
-        <div className="m-1col" style={{ maxWidth: 1100, margin: "0 auto", padding: "80px 24px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "center" }}>
-          <div style={{ color: "#fff" }}>
-            <h2 style={{ margin: "0 0 14px", fontSize: 36, fontWeight: 800, letterSpacing: "-0.02em" }}>Запишитесь на бесплатную консультацию</h2>
-            <p style={{ margin: "0 0 24px", fontSize: 16, lineHeight: 1.65, color: "rgba(255,255,255,0.7)" }}>Разберём вашу ситуацию и предложим оптимальное решение. Без обязательств.</p>
-            <div style={{ fontSize: 14, color: "rgba(255,255,255,0.7)" }}>
-              Или напишите руководителю лично:{" "}
-              <a href="https://t.me/Galina_Gor" style={{ color: "#FF9A50", fontWeight: 600 }}>Telegram</a> ·{" "}
-              <a href="https://wa.me/79169179274" style={{ color: "#FF9A50", fontWeight: 600 }}>WhatsApp</a> ·{" "}
-              <a href="tel:+74957788168" style={{ color: "#FF9A50", fontWeight: 600 }}>+7 (495) 778-81-68</a>
+      <section id="zapis" style={{ background: "#FEF0E6", borderTop: "1px solid #F5C9A0" }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto", padding: "80px 24px" }}>
+          <div className="m-1col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>
+            <div>
+              <div style={{ fontSize: 12, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "#F07828", marginBottom: 16 }}>Бесплатная консультация</div>
+              <h2 style={{ margin: "0 0 20px", fontSize: 38, fontWeight: 800, letterSpacing: "-0.02em", lineHeight: 1.15 }}>Разберём вашу ситуацию и предложим решение</h2>
+              <p style={{ margin: "0 0 32px", fontSize: 16, lineHeight: 1.7, color: "#3D3D3D" }}>Первая консультация бесплатная. Обсудим ваш бизнес, ответим на вопросы и скажем, чем можем помочь.</p>
+              <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+                <a href="https://t.me/Galina_Gor" target="_blank" rel="noopener noreferrer" style={{ display: "flex", alignItems: "center", gap: 12, fontSize: 15, fontWeight: 600, color: "#1A1A1A" }}>
+                  <span style={{ width: 40, height: 40, background: "#fff", borderRadius: 10, border: "1px solid #E8E8E8", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20 }}>✈</span>
+                  Написать в Telegram
+                </a>
+                <a href="https://wa.me/79169179274" target="_blank" rel="noopener noreferrer" style={{ display: "flex", alignItems: "center", gap: 12, fontSize: 15, fontWeight: 600, color: "#1A1A1A" }}>
+                  <span style={{ width: 40, height: 40, background: "#fff", borderRadius: 10, border: "1px solid #E8E8E8", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20 }}>💬</span>
+                  Написать в WhatsApp
+                </a>
+                <a href="tel:+74957788168" style={{ display: "flex", alignItems: "center", gap: 12, fontSize: 15, fontWeight: 600, color: "#1A1A1A" }}>
+                  <span style={{ width: 40, height: 40, background: "#fff", borderRadius: 10, border: "1px solid #E8E8E8", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20 }}>📞</span>
+                  +7 (495) 778-81-68
+                </a>
+              </div>
+            </div>
+            <div style={{ background: "#fff", borderRadius: 16, padding: "36px 36px", boxShadow: "0 4px 32px rgba(240,120,40,0.08)", border: "1px solid #F5C9A0" }}>
+              <div style={{ fontSize: 20, fontWeight: 700, marginBottom: 6 }}>Оставьте заявку</div>
+              <div style={{ fontSize: 14, color: "#6B6B6B", marginBottom: 24 }}>Перезвоним в течение рабочего дня</div>
+              <ConsultForm />
             </div>
           </div>
-          <ConsultForm />
         </div>
       </section>
     </>
