@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 
 const inputStyle = { height: 48, padding: "0 16px", border: "1px solid #D6D2CB", borderRadius: 6, fontSize: 15, fontFamily: "inherit", width: "100%", boxSizing: "border-box" } as React.CSSProperties;
 
@@ -16,7 +17,7 @@ export default function ConsultForm({ showDatetime }: { showDatetime?: boolean }
         Записаться
       </button>
       <div style={{ fontSize: 11, color: "#9E9A94", textAlign: "center" }}>
-        Нажимая кнопку, вы соглашаетесь на <a href="/soglasie" style={{ color: "#9E9A94" }}>обработку персональных данных</a>
+        Нажимая кнопку, вы соглашаетесь на <Link href="/soglasie" style={{ color: "#9E9A94" }}>обработку персональных данных</Link>
       </div>
     </form>
   );

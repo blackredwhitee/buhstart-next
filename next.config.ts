@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
   trailingSlash: true,
   images: { unoptimized: true },
   basePath: '/buhstart-next',
-  assetPrefix: '/buhstart-next',
+  assetPrefix: '/buhstart-next/',
 };
 
 export default nextConfig;
